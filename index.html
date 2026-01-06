@@ -1,0 +1,57 @@
+<script>
+function reply() {
+  let text = document.getElementById("msg").value.toLowerCase();
+  let response = "Sorry, I don't understand. Type 'help'.";
+
+  // Greetings (hi or hello)
+  if (text.includes("hi") || text.includes("hello")) {
+    response = "Hello! How can I help you?";
+
+  // Who are you
+  } else if (
+    text.includes("who are you") ||
+    text.includes("who r u") ||
+    text.includes("what are you")
+  ) {
+    response = "I am a rule-based chatbot.";
+
+  // Bot name
+  } else if (text.includes("your name")) {
+    response = "I am an Advanced School Chatbot.";
+
+  // Help
+  } else if (text.includes("help")) {
+    response = "You can ask about school, subjects, time, date, or simple math.";
+
+  // Time
+  } else if (text.includes("time")) {
+    response = "Current time is: " + new Date().toLocaleTimeString();
+
+  // Date
+  } else if (text.includes("date")) {
+    response = "Today's date is: " + new Date().toLocaleDateString();
+
+  // Subjects
+  } else if (text.includes("physics")) {
+    response = "Physics is the study of matter, energy, and motion.";
+  } else if (text.includes("computer")) {
+    response = "Computer science deals with computers and programming.";
+  } else if (text.includes("math")) {
+    response = "Mathematics is the study of numbers.";
+
+  // Simple math calculation
+  } else if (text.match(/[0-9]+\s*[\+\-\*\/]\s*[0-9]+/)) {
+    try {
+      response = "Answer is: " + eval(text);
+    } catch {
+      response = "Please enter a valid math expression.";
+    }
+
+  // Exit
+  } else if (text.includes("bye")) {
+    response = "Goodbye! Have a nice day 😊";
+  }
+
+  document.getElementById("bot").innerText = response;
+}
+</script>   
